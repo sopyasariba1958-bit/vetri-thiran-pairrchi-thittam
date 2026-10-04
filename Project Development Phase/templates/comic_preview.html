@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comic Preview</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f8f9fa; padding: 20px; }
+        .panel { background: white; padding: 20px; margin: 20px auto; max-width: 600px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        img { width: 100%; border-radius: 8px; margin-top: 10px; }
+        .desc { font-style: italic; color: #555; margin-top: 10px; }
+        .text { margin-top: 15px; line-height: 1.6; }
+        .btn-container { text-align: center; margin-top: 30px; }
+        .btn { padding: 12px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Your Comic Preview</h2>
+    
+    {% for panel in layout %}
+    <div class="panel">
+        <h3>Panel {{ panel.panel }}: {{ panel.title }}</h3>
+        <img src="/{{ panel.image_path }}" alt="Panel Image">
+        <div class="desc">{{ panel.scene_description }}</div>
+        <div class="text">{{ panel.text }}</div>
+    </div>
+    {% endfor %}
+
+    <div class="btn-container">
+        <a href="/export-success?pdf_path={{ pdf_path }}" class="btn">Download Your Comic as PDF</a>
+    </div>
+</body>
+</html>
